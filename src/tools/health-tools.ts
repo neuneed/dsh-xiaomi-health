@@ -16,7 +16,12 @@ export function registerHealthTools(
   config: ResolvedConfig,
 ): () => void {
   // Check if tools service is available on ctx
-  const toolsService = (ctx as unknown as { tools?: { register: (tool: any) => () => void } }).tools
+  let toolsService: any = null
+  try {
+    toolsService = (ctx.reflect as any)?.get('tools') ?? (ctx as any).tools
+  } catch {
+    // tools service not available in current profile
+  }
   if (!toolsService || typeof toolsService.register !== 'function') {
     return () => {}
   }

@@ -136,13 +136,14 @@ const json = (name: string, wire: string, typeSymbol: string, schema: z.ZodType)
   name,
   wire,
   source: 'json' as const,
-  codec: { mode: 'strict' as const, typeSymbol, schema },
+  codec: { mode: 'strict' as const, typeSymbol, schema, create: () => schema },
 })
 
 const resultOf = (typeSymbol: string, schema: z.ZodType) => ({
   mode: 'strict' as const,
   typeSymbol,
   schema,
+  create: () => schema,
 })
 
 export const DSH_HEALTH_INVOCATIONS: readonly InvocationDescriptor[] = [

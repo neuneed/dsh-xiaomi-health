@@ -16,7 +16,7 @@ import { registerHealthTools } from './tools/health-tools.ts'
 import type { ResolvedConfig } from './types.ts'
 
 export const name = 'dsh-xiaomi-health'
-export const inject = ['typert']
+export const inject = ['typert', 'tools']
 
 export interface Config {
   dbPath: string
