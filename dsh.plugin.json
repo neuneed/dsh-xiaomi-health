@@ -1,0 +1,17 @@
+{
+  "id": "dsh-xiaomi-health",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "description": "Xiaomi Health (Mi Fitness) monitoring, sync, and AI health dashboard.",
+  "engines": { "dsh": ">=0.1.0-rc.6" },
+  "contributes": {
+    "tools": [
+      "health_get_summary",
+      "health_query_metrics",
+      "health_query_sleep",
+      "health_sync_now",
+      "health_get_insights"
+    ],
+    "skills": []
+  }
+}

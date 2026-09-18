@@ -1,0 +1,25 @@
+# Build outputs
+lib/
+dist/
+*.tsbuildinfo
+
+# Dependencies
+node_modules/
+.pnpm-store/
+.venv/
+__pycache__/
+*.pyc
+
+# Local runtime & user data
+data/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+token.json
+qr_login.png
+
+# IDE and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

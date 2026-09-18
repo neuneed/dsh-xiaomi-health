@@ -1,0 +1,8 @@
+# dsh-xiaomi-health bundle: mounts the Xiaomi Health plugin into DSH
+- insert:
+    - id: dsh-xiaomi-health
+      name: dsh-xiaomi-health
+      config:
+        enableAutoSync: false
+        syncIntervalMinutes: 30
+        mockMode: true

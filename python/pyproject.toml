@@ -1,0 +1,13 @@
+[project]
+name = "dsh-health"
+version = "0.1.0"
+description = "Xiaomi Health sync engine for DeepSeek Harness"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mi-fitness>=0.2.0",
+    "httpx>=0.27.0",
+]
+
+[tool.uv]
+managed = true
