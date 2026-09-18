@@ -16,6 +16,7 @@ import { SleepCard } from './components/SleepCard.tsx'
 import { HeartRateCard } from './components/HeartRateCard.tsx'
 import { MetricGrid } from './components/MetricGrid.tsx'
 import { LoginModal } from './components/LoginModal.tsx'
+import { AiHealthCopilot } from './components/AiHealthCopilot.tsx'
 
 declare module '@deepseek-ai/dsh-client-ui-slots' {
   interface SlotMap {
@@ -211,6 +212,9 @@ export const HealthView: React.FC<HealthViewProps> = ({ actions, t }) => {
           </ul>
         </div>
       </div>
+
+      {/* Interactive AI Health Copilot (In-Dashboard Chat & Diagnostics) */}
+      <AiHealthCopilot summary={summary} t={t} />
 
       {/* Middle Row: Sleep Quality & Heart Rate */}
       <div className="dsh-health-grid-row">
