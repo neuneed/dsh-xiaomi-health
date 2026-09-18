@@ -6,6 +6,10 @@ English | [简体中文](README.zh.md)
 
 ---
 
+## Python sdk
+Read https://github.com/ridd1ot/xiaomi-health-sync
+
+
 ## Table of Contents
 
 - [Key Features](#-key-features)
