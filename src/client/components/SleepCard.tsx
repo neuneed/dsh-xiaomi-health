@@ -28,7 +28,12 @@ export const SleepCard: React.FC<Props> = ({ metrics, t }) => {
     <div className="dsh-health-card">
       <div className="dsh-health-card-header">
         <span className="dsh-health-card-title">
-          <span>🌙</span> {t('sleep.title')}
+          <span className="dsh-health-icon-badge dsh-health-icon-badge-sleep">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.3 2a10 10 0 0 0-1.9 20 10 10 0 0 0 8.6-4.9 1 1 0 0 0-1-1.5 8 8 0 1 1-7.2-12.6 1 1 0 0 0 1.5-1z" />
+            </svg>
+          </span>
+          {t('sleep.title')}
         </span>
         {score !== null && (
           <span className="dsh-health-score-pill">
@@ -46,33 +51,33 @@ export const SleepCard: React.FC<Props> = ({ metrics, t }) => {
       {/* Sleep stage proportional bar */}
       <div className="dsh-health-sleep-bar">
         <div className="dsh-health-bar-deep" style={{ width: `${deepPct}%` }} title={`Deep: ${deepMin}m`} />
-        <div className="dsh-health-bar-light" style={{ width: `${lightPct}%` }} title={`Light: ${lightMin}m`} />
+        <div className="dsh-health-bar-light" style={{ width: `${lightPct}%` }} title={`Core: ${lightMin}m`} />
         <div className="dsh-health-bar-rem" style={{ width: `${remPct}%` }} title={`REM: ${remMin}m`} />
         <div className="dsh-health-bar-awake" style={{ width: `${awakePct}%` }} title={`Awake: ${awakeMin}m`} />
       </div>
 
       <div className="dsh-health-sleep-stages">
-        <div>
-          <span>{t('sleep.deep')}</span>
-          <div className="dsh-health-stage-val" style={{ color: '#818cf8' }}>
+        <div className="dsh-health-stage-box">
+          <div>{t('sleep.deep')}</div>
+          <div className="dsh-health-stage-val" style={{ color: '#8e8e93' }}>
             {deepMin}m ({Math.round(deepPct)}%)
           </div>
         </div>
-        <div>
-          <span>{t('sleep.light')}</span>
-          <div className="dsh-health-stage-val" style={{ color: '#38bdf8' }}>
+        <div className="dsh-health-stage-box">
+          <div>{t('sleep.light')}</div>
+          <div className="dsh-health-stage-val" style={{ color: '#5e5ce6' }}>
             {lightMin}m ({Math.round(lightPct)}%)
           </div>
         </div>
-        <div>
-          <span>{t('sleep.rem')}</span>
-          <div className="dsh-health-stage-val" style={{ color: '#c084fc' }}>
+        <div className="dsh-health-stage-box">
+          <div>{t('sleep.rem')}</div>
+          <div className="dsh-health-stage-val" style={{ color: '#63e6e2' }}>
             {remMin}m ({Math.round(remPct)}%)
           </div>
         </div>
-        <div>
-          <span>{t('sleep.awake')}</span>
-          <div className="dsh-health-stage-val" style={{ color: '#fb7185' }}>
+        <div className="dsh-health-stage-box">
+          <div>{t('sleep.awake')}</div>
+          <div className="dsh-health-stage-val" style={{ color: '#ff453a' }}>
             {awakeMin}m
           </div>
         </div>

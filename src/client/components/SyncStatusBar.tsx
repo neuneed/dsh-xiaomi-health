@@ -21,13 +21,19 @@ export const SyncStatusBar: React.FC<Props> = ({
 }) => {
   const isMock = status?.mockMode ?? true
   const lastSyncTime = status?.lastSyncTs
-    ? new Date(status.lastSyncTs * 1000).toLocaleTimeString()
+    ? new Date(status.lastSyncTs * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     : null
+
+  const todayStr = new Date().toLocaleDateString('zh-CN', {
+    month: 'long',
+    day: 'numeric',
+    weekday: 'long',
+  })
 
   return (
     <div className="dsh-health-header">
       <div className="dsh-health-header-left">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <h2>{t('dashboard.title')}</h2>
           <span
             className={`dsh-health-badge ${
@@ -38,7 +44,7 @@ export const SyncStatusBar: React.FC<Props> = ({
           </span>
         </div>
         <p className="dsh-health-subtitle">
-          {t('dashboard.subtitle')} •{' '}
+          {todayStr} •{' '}
           {lastSyncTime
             ? t('dashboard.lastSync', { time: lastSyncTime })
             : t('dashboard.neverSynced')}
@@ -50,7 +56,7 @@ export const SyncStatusBar: React.FC<Props> = ({
           <button
             className="dsh-health-btn"
             onClick={onGenerateMock}
-            title="Populate test database with 14 days of realistic data"
+            title="生成 14 天逼真演示生理数据"
           >
             🎲 {t('dashboard.generateMock')}
           </button>
@@ -59,7 +65,7 @@ export const SyncStatusBar: React.FC<Props> = ({
         <button
           className="dsh-health-btn"
           onClick={onOpenLogin}
-          title="Login with Xiaomi Health QR Code"
+          title="绑定小米运动健康账号"
         >
           🔑 {t('dashboard.loginPrompt')}
         </button>
@@ -71,7 +77,7 @@ export const SyncStatusBar: React.FC<Props> = ({
         >
           {isSyncing ? (
             <>
-              <span className="dsh-health-spinner">🔄</span>
+              <span>⏳</span>
               {t('dashboard.syncing')}
             </>
           ) : (

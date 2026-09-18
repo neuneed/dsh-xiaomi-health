@@ -5,6 +5,7 @@ import type { TranslateNS } from '@deepseek-ai/dsh-client-ui-slots'
 
 export const zh = {
   'dashboard.title': '小米运动健康监控',
+  'dashboard.navTitle': '健康',
   'dashboard.subtitle': '实时同步穿戴设备健康指标与 AI 洞察',
   'dashboard.syncNow': '立即同步',
   'dashboard.syncing': '正在同步…',
@@ -89,6 +90,7 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
 
 export const en: Record<HealthLocaleKey, string> = {
   'dashboard.title': 'Xiaomi Health Monitor',
+  'dashboard.navTitle': 'Health',
   'dashboard.subtitle': 'Real-time wearable health metrics & AI insights',
   'dashboard.syncNow': 'Sync Now',
   'dashboard.syncing': 'Syncing…',

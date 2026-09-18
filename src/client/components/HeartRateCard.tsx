@@ -40,19 +40,24 @@ export const HeartRateCard: React.FC<Props> = ({ metrics, t }) => {
     <div className="dsh-health-card">
       <div className="dsh-health-card-header">
         <span className="dsh-health-card-title">
-          <span style={{ color: '#f43f5e' }}>❤️</span> {t('heartRate.title')}
+          <span className="dsh-health-icon-badge dsh-health-icon-badge-heart">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </span>
+          {t('heartRate.title')}
         </span>
-        <span style={{ fontSize: '12px', color: '#94a3b8' }}>
-          {t('heartRate.resting')}: <strong style={{ color: '#f1f5f9' }}>{restingBpm}</strong> {t('heartRate.bpm')}
+        <span style={{ fontSize: '12px', color: '#8e8e93', fontWeight: 500 }}>
+          {t('heartRate.resting')}: <strong style={{ color: '#ffffff' }}>{restingBpm}</strong> {t('heartRate.bpm')}
         </span>
       </div>
 
       <div className="dsh-health-hr-big">
         <span className="dsh-health-bpm-val">{latestBpm}</span>
-        <span style={{ fontSize: '14px', color: '#94a3b8' }}>{t('heartRate.bpm')}</span>
+        <span style={{ fontSize: '15px', color: '#8e8e93', fontWeight: 600 }}>{t('heartRate.bpm')}</span>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#94a3b8', margin: '4px 0' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#8e8e93', margin: '4px 0 8px 0' }}>
         <span>{t('heartRate.range')}: {minHr} - {maxHr} {t('heartRate.bpm')}</span>
         <span>{t('heartRate.zones')}</span>
       </div>
@@ -66,7 +71,7 @@ export const HeartRateCard: React.FC<Props> = ({ metrics, t }) => {
         <div className="dsh-health-zone-extreme" style={{ width: `${extremePct}%` }} title={`Peak: ${zones.extremeMinutes}m`} />
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#64748b' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#636366' }}>
         <span>{t('heartRate.zoneWarmup')}</span>
         <span>{t('heartRate.zoneFatBurn')}</span>
         <span>{t('heartRate.zoneAerobic')}</span>

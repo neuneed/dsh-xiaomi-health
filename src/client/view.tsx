@@ -24,6 +24,15 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
       scope: 'session'
       owner: { inspect?: { callId: string } | null; onInspectDone?: () => void }
     }
+    'sidebar.panellist': {
+      kind: 'list'
+      scope: 'root'
+      owner: { size?: number; active?: boolean }
+    }
+    'main': {
+      kind: 'keyed'
+      scope: 'root'
+    }
   }
 }
 
@@ -173,7 +182,7 @@ export const HealthView: React.FC<HealthViewProps> = ({ actions, t }) => {
           t={t}
         />
 
-        {/* AI Health Insights Card */}
+        {/* Apple Health Highlights & AI Insights Card */}
         <div className="dsh-health-insights-card">
           <div className="dsh-health-insight-score">
             <div
@@ -183,10 +192,10 @@ export const HealthView: React.FC<HealthViewProps> = ({ actions, t }) => {
               <div className="dsh-health-score-inner">{score}</div>
             </div>
             <div>
-              <div style={{ fontSize: '15px', fontWeight: 700, color: '#e2e8f0' }}>
+              <div style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff' }}>
                 {t('insights.title')}
               </div>
-              <div style={{ fontSize: '12px', color: '#a5b4fc', marginTop: '2px' }}>
+              <div style={{ fontSize: '12px', color: '#8e8e93', marginTop: '2px' }}>
                 {score >= 80 ? t('insights.healthy') : t('insights.attention')}
               </div>
             </div>
@@ -195,6 +204,7 @@ export const HealthView: React.FC<HealthViewProps> = ({ actions, t }) => {
           <ul className="dsh-health-insight-list">
             {insights.map((item, idx) => (
               <li key={idx} className="dsh-health-insight-item">
+                <span className="dsh-health-insight-bullet" />
                 <span>{item}</span>
               </li>
             ))}
