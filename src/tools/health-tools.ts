@@ -49,6 +49,12 @@ export function registerHealthTools(
           { type: 'text', text: JSON.stringify(value, null, 2) },
         ],
       },
+      isConcurrencySafe: () => true,
+      presentCall: (args: { date?: string }) => ({
+        card: 'generic' as const,
+        kind: 'read' as const,
+        title: `获取健康今日摘要${args?.date ? ` (${args.date})` : ''}`,
+      }),
       async execute(args: { date?: string }) {
         const targetDate = args.date || new Date().toISOString().split('T')[0]!
         const list = db.getDailyMetrics(targetDate, targetDate)
@@ -118,6 +124,12 @@ export function registerHealthTools(
           { type: 'text', text: JSON.stringify(value, null, 2) },
         ],
       },
+      isConcurrencySafe: () => true,
+      presentCall: (args: { days?: number }) => ({
+        card: 'generic' as const,
+        kind: 'read' as const,
+        title: `查询近 ${args?.days || 7} 天健康趋势指标`,
+      }),
       async execute(args: { days?: number }) {
         const days = Math.min(30, Math.max(1, args.days || 7))
         const end = new Date()
@@ -168,6 +180,12 @@ export function registerHealthTools(
           { type: 'text', text: JSON.stringify(value, null, 2) },
         ],
       },
+      isConcurrencySafe: () => true,
+      presentCall: (args: { date?: string }) => ({
+        card: 'generic' as const,
+        kind: 'read' as const,
+        title: `分析睡眠阶段与质量${args?.date ? ` (${args.date})` : ' (昨晚)'}`,
+      }),
       async execute(args: { date?: string }) {
         let date = args.date
         if (!date) {
@@ -229,6 +247,12 @@ export function registerHealthTools(
           { type: 'text', text: JSON.stringify(value, null, 2) },
         ],
       },
+      isConcurrencySafe: () => false,
+      presentCall: (args: { days?: number }) => ({
+        card: 'generic' as const,
+        kind: 'execute' as const,
+        title: `立即同步小米健康数据 (${args?.days || 7} 天)`,
+      }),
       async execute(args: { days?: number }) {
         const days = args.days || 7
         const res = await runner.run(days)
@@ -262,6 +286,12 @@ export function registerHealthTools(
           { type: 'text', text: JSON.stringify(value, null, 2) },
         ],
       },
+      isConcurrencySafe: () => true,
+      presentCall: (args: { days?: number }) => ({
+        card: 'generic' as const,
+        kind: 'read' as const,
+        title: `分析近期健康趋势与洞察 (${args?.days || 7} 天)`,
+      }),
       async execute(args: { days?: number }) {
         const days = Math.min(30, Math.max(3, args.days || 7))
         const end = new Date()

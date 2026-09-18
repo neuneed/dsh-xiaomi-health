@@ -3,8 +3,7 @@
  *
  * Mounts the health Remote namespace, registers i18n dictionaries, and
  * registers:
- * 1. `sidebar.panellist` + `main`: Global left navigation panel for Apple Health Dashboard.
- * 2. `conversation.view`: In-conversation secondary tab.
+ * - `sidebar.panellist` + `main`: Global left navigation panel for Apple Health Dashboard.
  */
 import React from 'react'
 import type { ClientContext } from '@deepseek-ai/dsh-client-runtime/client'
@@ -14,7 +13,6 @@ import { NS, en, zh } from './locales.ts'
 import {
   HealthView,
   type HealthActions,
-  type HealthViewSlotProps,
 } from './view.tsx'
 import { adoptStyles } from './styles.ts'
 
@@ -145,22 +143,6 @@ export function apply(ctx: ClientContext): void {
         >
           <HealthView actions={actions} t={t} />
         </div>
-      ),
-    ),
-  )
-
-  // 3. Register as secondary session conversation view tab
-  ctx.slots.inject('conversation.view', () =>
-    ctx.slots.register(
-      {
-        name: 'conversation.view',
-        id: 'dsh-xiaomi-health',
-        order: 25,
-        label: () => t('dashboard.title'),
-        inject: () => ({ actions, t }),
-      },
-      (props: HealthViewSlotProps) => (
-        <HealthView actions={props.actions} t={props.t} />
       ),
     ),
   )
