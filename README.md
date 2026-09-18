@@ -282,3 +282,8 @@ Supported `cordis.patch.yml` fields:
    - Allows sharing data safely via Xiaomi's family relatives sharing link (`/app/v1/relatives/*`), keeping master tokens off secondary servers.
 3. **Data Privacy**:
    - SQLite files and tokens stay local in `data/`. No intermediary servers or third-party tracking.
+
+<img width="1230" height="824" alt="screenshot-20260918-143541" src="https://github.com/user-attachments/assets/adc770b6-a7d1-48dd-b883-350f2f386459" />
+<img width="1220" height="1256" alt="screenshot-20260918-143559" src="https://github.com/user-attachments/assets/7e5e02ae-2d38-41a7-8cb2-4017c53fa74a" />
+
+
