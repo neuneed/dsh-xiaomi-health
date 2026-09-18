@@ -96,8 +96,13 @@ flowchart TB
    - Host 侧的 `HealthRuntime` 继承 `TypertRemoteService`，使用 `@Remote` 装饰器导出异步方法。
    - Client 侧挂载 `DSH_HEALTH_REMOTE`，通过底层 WebSocket/HTTP 双向通道安全通信，所有请求参数与返回结果均由严格的 `Zod` 模式强行校验，避免类型飘移。
 3. **视图插槽挂载 (UI Slots)**：
-   - Client 插件通过 `ctx.slots.inject('conversation.view', ...)` 将自己注册为会话视图中的常驻健康卡片/标签页（Order: 25），用户在聊天会话中可随时一键切换到实时健康仪表盘。
-4. **模型工具挂载 (ctx.tools)**：
+   - **主入口（全局左侧导航栏）**：Client 插件通过 `ctx.slots.inject('sidebar.panellist', ...)` 与 `ctx.slots.inject('main', ...)` 注册为左侧全局独立应用面板（带专属 ❤️ 健康图标）。点击即可在主工作区全屏打开独立的 **Apple Health 风格**健康大屏，不依赖任何会话，打开即可随时使用。
+   - **辅助入口（会话标签页）**：同时注册 `ctx.slots.inject('conversation.view', ...)` 作为会话顶栏标签页，满足在具体会话内快速查阅健康状态的需求。
+4. **视觉风格 (Apple Health Design System)**：
+   - 采用纯黑 OLED 画布 (`#000000`) 与 Apple 质感分组卡片 (`#1C1C1E`)；
+   - 官方同款三环配色（活动能量 `#FA114F`、锻炼时长 `#A1FF00`、有效站立 `#00F0FF`）；
+   - 心率鲜红 (`#FF2D55`) 与五阶段区间、睡眠水绿/靛蓝 (`#63E6E2` / `#5E5CE6`) 分期架构、SF 字体大号清晰排版。
+5. **模型工具挂载 (ctx.tools)**：
    - Host 插件在 `ctx.tools` 上注册 5 个标准化模型工具。当用户在自然语言中询问健康相关问题时，模型会自动通过函数调用（Function Calling）唤起插件读取 SQLite 数据库，生成有据可依的健康评估。
 
 ---

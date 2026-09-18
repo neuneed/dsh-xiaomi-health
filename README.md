@@ -93,9 +93,14 @@ flowchart TB
 2. **Typert Remote RPC Gateway**:
    - `HealthRuntime` extends `TypertRemoteService` on the host side, exposing methods decorated with `@Remote`.
    - The browser mounts `DSH_HEALTH_REMOTE` and calls typed methods validated against identical `Zod` wire schemas defined in `src/contract.ts`.
-3. **Slot-Based Client Rendering (`conversation.view`)**:
-   - The browser entry registers into `conversation.view` at priority `25`. Users can toggle directly to the Xiaomi Health tab within any conversation session.
-4. **Model Function Calling (`ctx.tools`)**:
+3. **Slot-Based Client Rendering (`sidebar.panellist` & `main`)**:
+   - **Primary Entrance (Global Sidebar Panel)**: The client registers into `sidebar.panellist` and `main` with a dedicated ❤️ Health icon on the left navigation rail. Clicking it opens a dedicated full-screen Apple Health style dashboard in the main view area without needing any conversation.
+   - **Secondary Entrance (`conversation.view`)**: The browser entry also registers into `conversation.view` at priority `25`, allowing quick access directly within an active conversation tab.
+4. **Apple Health Design System**:
+   - Built on pure black OLED background (`#000000`) and Apple secondary grouped cards (`#1C1C1E`);
+   - Authentic Apple Watch activity rings: Move (`#FA114F`), Exercise (`#A1FF00`), and Stand (`#00F0FF`);
+   - Apple Heart Rate (`#FF2D55`) with 5 zones; Apple Sleep teal/indigo (`#63E6E2` / `#5E5CE6`) architecture; San Francisco typography with tabular numerals.
+5. **Model Function Calling (`ctx.tools`)**:
    - The plugin registers 5 tools onto `ctx.tools`. When the user asks health-related questions in natural language, the agent loop calls these tools to inspect the SQLite database and construct grounded answers.
 
 ---
